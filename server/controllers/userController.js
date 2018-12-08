@@ -17,10 +17,7 @@ module.exports = {
                 return user.save();
             })
             .then(result => {
-                res.status(201).json({
-                    message: "Succesfully user created!",
-                    user: result
-                })
+                res.status(201).json(user)
             })
             .catch(err => {
                 console.log(err)
@@ -49,10 +46,7 @@ module.exports = {
                         error.statusCode = 411;
                         throw error;
                     }
-                    res.status(200).json({
-                        message:'Succefully login!',
-                        user: user
-                    })
+                    res.status(200).json(user)
                 })
                 .catch(err => {
                     console.log(err)
