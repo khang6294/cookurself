@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const api = require('./api')
+const port = process.env.PORT || 8080;
 app.use(bodyParser.json()); // application/json
 app.use(bodyParser.urlencoded({extended: false}));
 
@@ -29,6 +30,6 @@ app.use((error,req,res,next) => {
 //Database connection
 mongoose.connect('mongodb+srv://khang:GvVWiyfYeSZ889V@cluster0-g4j7c.mongodb.net/cookurself?retryWrites=true')
     .then(result => {
-        app.listen(8080)
+        app.listen(port)
     })
     .catch(err => console.log(err))
