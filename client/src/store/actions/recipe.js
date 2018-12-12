@@ -1,7 +1,14 @@
+import axios from 'axios'
+
 export const getRecipeList = () => {
-    return {type: 'GET_RECIPE_LIST', payload: [{
-        name: 'Recipe1'
-    }]};
+    return dispatch => {
+        axios.get('http://localhost:8080/api/recipe')
+        .then(res => {
+            dispatch({type: 'GET_RECIPE_LIST', payload: res.data});
+        })
+    }
+    
+    
 };
 
 export const addRecipe = () => {
