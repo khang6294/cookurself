@@ -44,12 +44,14 @@ const RecipeList = (props) => {
         )
     })
     return (
-        <div style={{ padding: 60 }}>
-            <Grid container>
-                {recipeList}
-            </Grid>
-        </div>
-        
+        <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="flex-start"
+        >
+        {recipeList}
+        </Grid>
     )
 }
 

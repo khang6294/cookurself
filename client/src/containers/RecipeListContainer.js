@@ -12,9 +12,15 @@ class RecipeListContainer extends Component {
 
 
     render(){
+        const newRecipe = {
+            name:'Fried Noodles',
+            duration:30,
+            instructions:'abc',
+            ingredients: 'cde'
+        }
         return(
             <>
-            <Button color="primary" variant="contained" onClick = {() => this.props.addRecipe()}>Add recipe</Button>
+            <Button color="primary" variant="contained" onClick = {() => this.props.addRecipe(newRecipe)}>Add recipe</Button>
             <br/>
             <br/>
             <RecipeList recipeList = {this.props.recipeList}/>

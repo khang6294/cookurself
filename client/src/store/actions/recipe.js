@@ -11,8 +11,11 @@ export const getRecipeList = () => {
     
 };
 
-export const addRecipe = () => {
-    return {type: 'ADD_RECIPE', payload: {
-        name: 'Recipe 2'
-    }}
+export const addRecipe = (newRecipe) => {
+    return dispatch => {
+        axios.post('http://localhost:8080/api/recipe',newRecipe)
+        .then(res => {
+            dispatch({type: 'ADD_RECIPE', payload: res.data});
+        })
+    }
 };
