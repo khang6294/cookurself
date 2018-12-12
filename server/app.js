@@ -3,9 +3,11 @@ const app = express();
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const api = require('./api')
+const path = require('path')
 const port = process.env.PORT || 8080;
 app.use(bodyParser.json()); // application/json
 app.use(bodyParser.urlencoded({extended: false}));
+app.use('/api', express.static(path.join(__dirname,'../uploads'))); //handling static images
 
 
 app.use((req, res, next) => {

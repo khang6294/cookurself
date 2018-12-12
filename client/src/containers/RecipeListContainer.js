@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators from '../store/actions/index'
-import {getRecipeList,addRecipe} from '../store/actions/recipe'
 import RecipeList from '../components/Recipe/RecipeList'
+import Button from '@material-ui/core/Button';
 
 class RecipeListContainer extends Component {
-
+    
     componentDidMount(){
         this.props.getRecipeList();
     }
@@ -14,7 +14,9 @@ class RecipeListContainer extends Component {
     render(){
         return(
             <>
-            <button onClick = {() => this.props.addRecipe()}>Add recipe</button>
+            <Button color="primary" variant="contained" onClick = {() => this.props.addRecipe()}>Add recipe</Button>
+            <br/>
+            <br/>
             <RecipeList recipeList = {this.props.recipeList}/>
             </>
         )
