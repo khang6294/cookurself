@@ -14,9 +14,16 @@ const recipeSchema = new Schema({
         type: String,
         required: true
     },
-    ingredients: {
-        type: Array,
-        required: true
+    ingredients: [
+        {
+            type: Schema.Types.ObjectId,
+            ref:'Ingredient',
+            required: true
+        }
+    ],
+    creator: {
+        type: Schema.Types.ObjectId,
+        ref:'User',
     },
     introduction:{
         type: String,
