@@ -1,7 +1,7 @@
 const Ingredient = require('../models/ingredientModel')
 
 module.exports = {
-    createIngredient = (req,res,next) => {
+    createIngredient : (req,res,next) => {
         const name = req.body.name;
         const recipe = req.body.recipe;
         const ingredient = new Ingredient({
@@ -20,7 +20,7 @@ module.exports = {
                 next(err)
             })
     },
-    getAllIngredients = (req,res,next) => {
+    getAllIngredients : (req,res,next) => {
         Ingredient.find()
             .then(ingredients => {
                 res.status(200).json(ingredients)

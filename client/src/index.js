@@ -7,8 +7,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import manageRecipeListReducer from './store/reducers/recipeList'
+import axios from 'axios';
 
-
+axios.defaults.baseURL = 'http://localhost:8080/api'
 
 const store = createStore(manageRecipeListReducer,applyMiddleware(thunk));
 
