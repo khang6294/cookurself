@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators from '../store/actions/index'
 import RecipeList from '../components/Recipe/RecipeList'
-import Button from '@material-ui/core/Button';
+import NewRecipe from '../components/Recipe/NewRecipe'
 
 class RecipeListContainer extends Component {
     
@@ -12,18 +12,12 @@ class RecipeListContainer extends Component {
 
 
     render(){
-        const newRecipe = {
-            name:'Fried Noodles',
-            duration:30,
-            instructions:'abc',
-            ingredients: 'cde'
-        }
         return(
             <>
-            <Button color="primary" variant="contained" onClick = {() => this.props.addRecipe(newRecipe)}>Add recipe</Button>
+            <NewRecipe createNewRecipe = {(newRecipe) => this.props.addRecipe(newRecipe)}/>
             <br/>
             <br/>
-            <RecipeList recipeList = {this.props.recipeList}/>
+            <RecipeList {...this.props} recipeList = {this.props.recipeList}/>
             </>
         )
     }
@@ -32,7 +26,7 @@ class RecipeListContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        recipeList: state.recipeList
+        recipeList: state.recipeList.recipeList
     }
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
 import './RecipeList.css'
+import {NavLink} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -12,14 +13,15 @@ import Typography from '@material-ui/core/Typography';
 const RecipeList = (props) => {
     const recipeList = props.recipeList.map(recipe => {
         return (
-            <div className="recipe-card-wrapper">
+            <div key={recipe._id} className="recipe-card-wrapper">
                 <Card className="recipe-card">
+                <NavLink to={`/${recipe._id}`}>
                     <CardActionArea>
                         <CardMedia
                             component="img"
                             alt="Contemplative Reptile"
                             height="200"
-                            image= 'https://ichef.bbci.co.uk/food/ic/food_16x9_832/recipes/one_pot_chorizo_and_15611_16x9.jpg'
+                            image= 'http://localhost:8080/api/food.jpg'
                             title="Contemplative Reptile"
                         />
                         <CardContent>
@@ -31,6 +33,7 @@ const RecipeList = (props) => {
                         </Typography>
                         </CardContent>
                     </CardActionArea>
+                    </NavLink>
                     <CardActions>
                         <Button size="small" color="primary">
                             Share
@@ -41,6 +44,7 @@ const RecipeList = (props) => {
                     </CardActions>
                 </Card>
             </div>
+            
         )
     })
     return (
@@ -48,7 +52,7 @@ const RecipeList = (props) => {
             container
             direction="row"
             justify="center"
-            alignItems="flex-start"
+            alignItems="center"
         >
         {recipeList}
         </Grid>
