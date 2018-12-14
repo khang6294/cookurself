@@ -4,6 +4,7 @@ import './App.css';
 import axios from 'axios'
 import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import RecipeList from './containers/RecipeListContainer'
+import Recipe from './containers/RecipeContainer'
 import Header from './components/Navigation/Header'
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
         <Header/>
         <br/>
         <Route path="/" exact component={RecipeList}/>
+        <Route path ="/:recipeId" exact component={Recipe}/>
       </div>
       </BrowserRouter>
     );

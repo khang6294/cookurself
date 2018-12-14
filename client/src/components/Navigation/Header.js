@@ -68,9 +68,17 @@ const styles = theme => ({
   });
 
 class Header extends Component {
+
+    shouldComponentUpdate(nextProps,nextState){
+        if(this.state.open !== nextState.open){
+            return true;
+        } else return false;
+        
+    }
+
     state = {
         open: false,
-      };
+    };
 
     handleDrawerOpen = () => {
         this.setState({ open: true });

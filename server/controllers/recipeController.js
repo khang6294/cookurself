@@ -24,6 +24,7 @@ module.exports = {
     getRecipe: (req,res,next) => {
         const recipeId = req.params.recipeId
         Recipe.findOne({_id: recipeId})
+            .populate('ingredients')
             .then(recipe => {
                 res.status(200).json(recipe)
             })

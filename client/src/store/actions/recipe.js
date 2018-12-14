@@ -19,3 +19,19 @@ export const addRecipe = (newRecipe) => {
         })
     }
 };
+
+export const getRecipe = (recipeId) => {
+    return dispatch => {
+        axios.get(`recipe/${recipeId}`)
+            .then(res => {
+                dispatch({type:'GET_RECIPE', payload: res.data})
+            })
+    }
+}
+
+export const resetRecipe = () => {
+    return {
+        type: 'RESET_RECIPE',
+        payload: 'reset'
+    }
+}
