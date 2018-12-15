@@ -1,0 +1,77 @@
+
+.ingredient-list {
+    list-style: none;
+    padding-left: 4%;
+    line-height: 2em !important;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+.ingredient-list li {
+    position: relative;
+    padding-left: 25px;
+    font-size: 1.1rem;
+}
+.ingredient-list li:before {
+    content: '';
+    width: 1.1rem;
+    height: 1.1rem;
+    position: absolute;
+    background-image: url('http://localhost:8080/api/list-ingredient-style.png');
+    background-size: cover;
+    background-position: center;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.instructions{
+    padding-left: 4%;
+    list-style: none;
+    line-height: 2em !important;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    clear: both;
+}
+
+.instructions li {
+    padding-left: 1%;
+    padding-top: 1em;
+    display: block;
+    position: relative;
+    counter-increment: inst;
+}
+.instructions li::before {
+    content: counter(inst);
+    background: rgba(255, 150, 0, 0.35);
+    color: #fff;
+    font-size: 1em;
+    font-weight: 700;
+    font-style: italic;
+    text-shadow: 1px 1px rgba(255, 150, 0, 0.5);
+    border-radius: 0 0.675em 0.675em 0;
+    font-size: 1.5em;
+    text-align: center;
+    padding-top: 0;
+    padding-left: 2.25%;
+    left: -5%;
+    top: -0.65em;
+    height: 1.35em;
+    width: 1.35em;
+    position: absolute;
+    transition: all 0.2s ease-in-out;
+    z-index: -1;
+}
+@media (min-width: 33em) {
+    .instructions li:before {
+        border-radius: 50%;
+        font-size: 1.5em;
+        height: 1.35em;
+        margin-left: 2.5%;
+        padding-left: 0;
+        padding-top: 0;
+        top: -0.15em;
+        width: 1.35em;
+        z-index: -1;
+    }
+}
+  

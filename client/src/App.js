@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import axios from 'axios'
 import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import RecipeList from './containers/RecipeListContainer'
 import Recipe from './containers/RecipeContainer'

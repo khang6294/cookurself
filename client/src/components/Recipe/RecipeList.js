@@ -15,7 +15,7 @@ const RecipeList = (props) => {
         return (
             <div key={recipe._id} className="recipe-card-wrapper">
                 <Card className="recipe-card">
-                <NavLink to={`/${recipe._id}`}>
+                <NavLink style={{ textDecoration: 'none' }} to={`/${recipe._id}`}>
                     <CardActionArea>
                         <CardMedia
                             component="img"
