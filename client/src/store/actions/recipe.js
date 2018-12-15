@@ -35,3 +35,10 @@ export const resetRecipe = () => {
         payload: 'reset'
     }
 }
+
+export const onInputSearchChange =(inputSearch) => {
+    return {
+        type:'INPUT_SEARCH_CHANGE',
+        payload: inputSearch
+    }
+}

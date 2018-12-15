@@ -16,6 +16,7 @@ const styles = theme => ({
         textAlign: 'center',
         fontSize: '2.5rem',
         fontWeight: 'bold',
+        fontFamily: 'ZCOOL XiaoWei'
     },
     recipeDuration:{
         textAlign: 'center',
@@ -55,14 +56,14 @@ const recipe = (props) => {
             </Typography>
             <img src = 'http://localhost:8080/api/food.jpg' className={classes.recipeImg} alt="Recipe"/>
             <div className={classes.recipeBody}>
-                <Typography variant="h5" component="h1">
+                <Typography variant="h5" component="h1" style={{color:'#2c2cc1'}}>
                     Ingredients
                 </Typography>
                 <Divider variant="middle" className={classes.divider}/>
                 <Typography component="ul" className='ingredient-list'>
                     {ingredients}
                 </Typography>
-                <Typography variant="h5" component="h1">
+                <Typography variant="h5" component="h1" style={{color:'#2c2cc1'}}>
                     Instructions
                 </Typography>
                 <Divider variant="middle" className={classes.divider}/>

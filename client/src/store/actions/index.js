@@ -2,5 +2,6 @@ export {
     getRecipeList,
     addRecipe,
     getRecipe,
-    resetRecipe
+    resetRecipe,
+    onInputSearchChange
 } from './recipe';

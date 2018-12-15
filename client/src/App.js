@@ -13,8 +13,8 @@ class App extends Component {
       <div className="App">
         <Header/>
         <br/>
-        <Route path="/" exact component={RecipeList}/>
-        <Route path ="/:recipeId" exact component={Recipe}/>
+        <Route path="/recipes" exact component={RecipeList}/>
+        <Route path ="/recipes/:recipeId" exact component={Recipe}/>
       </div>
       </BrowserRouter>
     );
