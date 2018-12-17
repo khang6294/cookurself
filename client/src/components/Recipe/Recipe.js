@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import AccessTime from '@material-ui/icons/AccessTime';
+import Loading from '../Loading/Loading'
 import './Recipe.css'
 
 const styles = theme => ({
@@ -72,7 +73,7 @@ const recipe = (props) => {
                 </Typography>
             </div>
         </div>
-        )} else return null
+        )} else return <Loading/>
     
 }
 
