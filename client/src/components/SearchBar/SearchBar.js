@@ -65,15 +65,15 @@ class SearchBar extends Component{
             <Grid
                 container
                 direction="row"
-                justify="center"
-                alignItems="center"
+                justify="flex-start"
+                alignItems="flex-start"
             >
                 <div className={classes.search}>
                     <div className={classes.searchIcon}>
                         <SearchIcon />
                     </div>
                         <InputBase
-                            placeholder="Search…"
+                            placeholder="Search recipe"
                             value={this.state.inputSearch}
                             onChange={this.handleChange}
                             classes={{

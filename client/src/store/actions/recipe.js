@@ -42,3 +42,10 @@ export const onInputSearchChange =(inputSearch) => {
         payload: inputSearch
     }
 }
+
+export const querySelected = (checked) => {
+    return {
+        type: 'QUERY_SELECTED',
+        payload: checked
+    }
+}

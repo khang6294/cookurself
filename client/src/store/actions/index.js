@@ -3,5 +3,9 @@ export {
     addRecipe,
     getRecipe,
     resetRecipe,
-    onInputSearchChange
+    onInputSearchChange,
+    querySelected
 } from './recipe';
+export {
+    getIngredientList
+} from './ingredient'

@@ -1,8 +1,13 @@
 .recipe-card{
     height: 350px;
-    width: 300px;
+    width: 250px;
 }
 .recipe-card-wrapper{
-    width: 320px;
+    width: 280px;
     height: 400px;
+}
+
+.recipe-list-container{
+    display: flex;
+    margin-left: 280px;
 }
