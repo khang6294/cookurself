@@ -10,4 +10,5 @@
 .recipe-list-container{
     display: flex;
     margin-left: 280px;
+    position: relative
 }

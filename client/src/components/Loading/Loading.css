@@ -16,8 +16,8 @@
     height: 0;
     margin: 6px;
     box-sizing: border-box;
-    border: 26px solid #cef;
-    border-color: #cef transparent #cef transparent;
+    border: 26px solid rgb(74, 25, 207);
+    border-color: rgb(74, 25, 207) transparent rgb(74, 25, 207) transparent;
     animation: loading 1.2s infinite;
 }
 @keyframes loading {

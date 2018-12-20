@@ -12,15 +12,15 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 
 const styles = theme => ({
-    root: {
+    rootRecipes: {
       flexGrow: 1,
+      marginLeft:'240px',
+    },
+    rootRecipe: {
+        flexGrow: 1,
     },
     appBar: {
         backgroundColor: '#6598c5',
-        transition: theme.transitions.create(['margin', 'width'], {
-          easing: theme.transitions.easing.sharp,
-          duration: theme.transitions.duration.leavingScreen,
-        }),
     },
     hide: {
         display: 'none',
@@ -61,30 +61,17 @@ class Header extends Component {
         const { open } = this.state;
 
         return (
-            <div className={classes.root}>
-                
+            <div className={this.props.match.params.recipeId ? classes.rootRecipe : classes.rootRecipes}>
                 <AppBar 
                     position="static"
                     className={classNames(classes.appBar, {
                         [classes.appBarShift]: open,
                       })}
                 >
-                <Toolbar>
-                    <IconButton 
-                        color="inherit"
-                        aria-label="Menu"
-                        onClick={this.handleDrawerOpen}
-                        className={classNames(classes.menuButton, open && classes.hide)}
-                    >
-                        <MenuIcon onClick = {this.handleDrawerOpen}/>
-                    </IconButton>
-                    <Typography variant="h6" color="inherit" className={classes.grow}>
-                        <Logo/>
-                    </Typography>
-                    <Button color="inherit">Login</Button>
-                </Toolbar>
+                <div className={classes.grow}>
+                    <Logo/>
+                </div>
                 </AppBar>
-                
             </div>
         )
     }

@@ -4,6 +4,7 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import SearchIcon from '@material-ui/icons/Search';
+import './SearchBar.css'
 
 const styles = theme => ({
     search: {
@@ -14,9 +15,9 @@ const styles = theme => ({
         '&:hover': {
         backgroundColor: fade(theme.palette.common.white, 0.25),
         },
-        width: '200px',
+        width: '300px',
         [theme.breakpoints.up('sm')]: {
-            width: '200px',
+            width: '300px',
         },
     },
     searchIcon: {
@@ -62,12 +63,7 @@ class SearchBar extends Component{
         const { classes } = this.props;
 
         return (
-            <Grid
-                container
-                direction="row"
-                justify="flex-start"
-                alignItems="flex-start"
-            >
+            <div className='search-container'>
                 <div className={classes.search}>
                     <div className={classes.searchIcon}>
                         <SearchIcon />
@@ -82,7 +78,7 @@ class SearchBar extends Component{
                             }}
                         />
                 </div>
-          </Grid>
+          </div>
         )
     }
 }

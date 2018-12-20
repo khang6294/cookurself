@@ -4,6 +4,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import MailIcon from '@material-ui/icons/Mail';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
@@ -16,7 +17,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { withStyles } from '@material-ui/core/styles';
 import QueryList from './QueryList'
 
-const drawerWidth = 230;
+const drawerWidth = 240;
 const styles = theme => ({
     drawer: {
         width: drawerWidth,
@@ -50,15 +51,17 @@ const SideBar = (props) => {
                 }}
             >
                 <List>
-                    {['Favorite'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <FavoriteIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
+                    <ListItem button key={'favorite'}>
+                        <ListItemIcon><FavoriteIcon style={{color:'#ef0909'}}/></ListItemIcon>
+                        <ListItemText primary={'Favorite'} />
                     </ListItem>
-                    ))}
+                    <ListItem button key={'new-recipe'}>
+                        <ListItemIcon><AddCircleOutlineIcon style={{color:'#30bd30'}}/></ListItemIcon>
+                        <ListItemText primary={'New Recipe'} />
+                    </ListItem>
                 </List>
                 <Divider />
-                <Typography>Filters</Typography>
+                <Typography style={{fontSize:'1.2rem',textAlign:'center',paddingBottom:'1rem',paddingTop:'1rem'}}>Filters</Typography>
                 <ExpansionPanel className={classes.expansionRoot}>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                         <Typography className={classes.heading}>Ingredients</Typography>
@@ -86,15 +89,17 @@ const SideBar = (props) => {
                     }}
                 >
                     <List>
-                        {['Favorite'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <FavoriteIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
+                        <ListItem button key={'favorite'}>
+                            <ListItemIcon><FavoriteIcon style={{color:'#ef0909'}}/></ListItemIcon>
+                            <ListItemText primary={'Favorite'} />
                         </ListItem>
-                        ))}
+                        <ListItem button key={'new-recipe'}>
+                            <ListItemIcon><AddCircleOutlineIcon style={{color:'#30bd30'}}/></ListItemIcon>
+                            <ListItemText primary={'New Recipe'} />
+                        </ListItem>
                     </List>
                     <Divider />
-                    <Typography>Filters</Typography>
+                    <Typography style={{fontSize:'1.2rem',textAlign:'center',paddingBottom:'1rem',paddingTop:'1rem'}}>Filters</Typography>
                     <ExpansionPanel className={classes.expansionRoot}>
                         <ExpansionPanelSummary>
                             <Typography className={classes.heading}>Ingredients</Typography>

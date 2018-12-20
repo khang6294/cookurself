@@ -49,14 +49,14 @@ const RecipeList = (props) => {
     })
     return (
         <div className="recipe-list-container">
-        <Grid
-            container
-            direction="row"
-            justify="flex-start"
-            alignItems="flex-start"
-        >
-        {recipeList}
-        </Grid>
+            <Grid
+                container
+                direction="row"
+                justify="flex-start"
+                alignItems="flex-start"
+            >
+            {recipeList}
+            </Grid>
         </div>
     )
 }
