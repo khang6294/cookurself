@@ -1,28 +1,25 @@
 import React, {Component} from 'react';
-import classNames from 'classnames';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import MuiDialogContent from '@material-ui/core/DialogContent';
-import MuiDialogActions from '@material-ui/core/DialogActions';
-import CloseIcon from '@material-ui/icons/Close';
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Chip from '@material-ui/core/Chip';
 import Input from '@material-ui/core/Input';
 import FormControl from '@material-ui/core/FormControl';
-
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import './NewRecipe.css'
 
 
 const styles = theme => ({
     container: {
-        display: 'flex',
-        flexWrap: 'wrap',
+        marginLeft: '250px',
+        paddingTop: '2rem',
+        height: '500px',
+        width: '200px',
+        border: '1px solid'
     },
     textField: {
         marginLeft: theme.spacing.unit,
@@ -43,58 +40,16 @@ const styles = theme => ({
     chips: {
         display: 'flex',
         flexWrap: 'wrap',
+        width:'100%'
     },
     chip: {
-        margin: theme.spacing.unit,
+        // margin: theme.spacing.unit,
     },
     noLabel: {
         marginTop: theme.spacing.unit * 3,
     },
     }
 );
-
-
-const DialogTitle = withStyles(theme => ({
-    root: {
-        borderBottom: `1px solid ${theme.palette.divider}`,
-        margin: 0,
-        padding: theme.spacing.unit * 2,
-    },
-    closeButton: {
-        position: 'absolute',
-        right: theme.spacing.unit,
-        top: theme.spacing.unit,
-        color: theme.palette.grey[500],
-    },
-    }))(props => {
-    const { children, classes, onClose } = props;
-    return (
-        <MuiDialogTitle disableTypography className={classes.root}>
-        <Typography variant="h6">{children}</Typography>
-        {onClose ? (
-            <IconButton aria-label="Close" className={classes.closeButton} onClick={onClose}>
-            <CloseIcon />
-            </IconButton>
-        ) : null}
-        </MuiDialogTitle>
-    );
-});
-
-const DialogContent = withStyles(theme => ({
-    root: {
-        margin: 0,
-        padding: theme.spacing.unit * 2,
-    },
-}))(MuiDialogContent);
-
-const DialogActions = withStyles(theme => ({
-    root: {
-        borderTop: `1px solid ${theme.palette.divider}`,
-        margin: 0,
-        padding: theme.spacing.unit,
-    },
-}))(MuiDialogActions);
-
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -107,18 +62,6 @@ const MenuProps = {
   },
 };
 
-const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
-];
 
 function getStyles(name, that) {
   return {
@@ -139,14 +82,6 @@ class NewRecipe extends Component {
         open: false,
     };
 
-    handleClickOpen = () => {
-        this.setState({ open: true });
-    };
-
-    handleClose = () => {
-        this.setState({ open: false });
-    };
-
     handleChange = name => event => {
         this.setState({
             [name]: event.target.value,
@@ -158,10 +93,13 @@ class NewRecipe extends Component {
       };
 
     handleCreate = () => {
+        const ingredients = this.state.ingredients.map(ingredient => {
+            return this.props.ingredientList.filter(ingredientListItem => ingredientListItem.name === ingredient)[0]._id
+        })
         const newRecipe = {
             name: this.state.name,
             instructions: this.state.instructions,
-            ingredients: [this.state.ingredients],
+            ingredients: ingredients,
             duration: this.state.duration,
             creator: '5c0c24b25c363311125da5fd'
         }
@@ -170,21 +108,21 @@ class NewRecipe extends Component {
     }
 
     render() {
-        const { classes } = this.props;
-
+        const { classes,ingredientList } = this.props;
     return (
         <>
-        <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
-          Add recipe
-        </Button>        
-        <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
-          aria-labelledby="form-dialog-title"
-        >
-            <DialogTitle id="form-dialog-title" onClose={this.handleClose}>New Recipe</DialogTitle>
-            <DialogContent>
-                <form className={classes.container} noValidate autoComplete="off">
+        <Button variant="contained" style={{marginLeft: '250px',marginTop:'2rem'}} onClick={() => this.props.backToRecipeList()}>Back</Button>
+        <Paper className='form-container'> 
+            <Grid
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+            >
+                <h1>New recipe</h1>
+            </Grid>
+            <Grid container spacing={24} >
+                <Grid item xs={6}>
                     <TextField
                         required
                         id="standard-required"
@@ -194,6 +132,36 @@ class NewRecipe extends Component {
                         className={classes.textField}
                         margin="normal"
                     />
+                </Grid>
+                <Grid item xs={6}>
+                    <TextField
+                        required
+                        id="standard-number"
+                        label="Duration (minutes)"
+                        value={this.state.duration}
+                        onChange={this.handleChange('duration')}
+                        type="number"
+                        className={classes.textField}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        margin="normal"
+                    />  
+                    </Grid>
+                    <Grid item xs={12}>
+                    
+                    <TextField
+                        required
+                        multiline
+                        id="standard-required"
+                        label="Intructions"
+                        value={this.state.instructions}
+                        onChange={this.handleChange('instructions')}
+                        style={{ margin: 8,width: '90%' }}
+                        margin="normal"
+                    />
+                </Grid>
+                <Grid item xs={12}>
                     <FormControl className={classes.formControl}>
                     <InputLabel htmlFor="select-multiple-chip">Ingredients</InputLabel>
                     <Select
@@ -210,42 +178,26 @@ class NewRecipe extends Component {
                         )}
                         MenuProps={MenuProps}
                     >
-                        {names.map(name => (
-                        <MenuItem key={name} value={name} style={getStyles(name, this)}>
-                            {name}
+                        {ingredientList.map(ingredient => (
+                        <MenuItem key={ingredient._id} value={ingredient.name} style={getStyles(ingredient, this)}>
+                            {ingredient.name}
                         </MenuItem>
                         ))}
                     </Select>
                     </FormControl>
-                    <TextField
-                        required
-                        id="standard-required"
-                        label="Intructions"
-                        value={this.state.instructions}
-                        onChange={this.handleChange('instructions')}
-                        className={classes.textField}
-                        margin="normal"
-                    />
-                    <TextField
-                        id="standard-number"
-                        label="Duration"
-                        value={this.state.duration}
-                        onChange={this.handleChange('duration')}
-                        type="number"
-                        className={classes.textField}
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        margin="normal"
-                    />
-                </form>
-            </DialogContent>
-            <DialogActions>
-                <Button onClick={this.handleCreate} color="primary">
-                    Create
-                </Button>
-          </DialogActions>
-      </Dialog>
+                </Grid>
+                <Grid item xs={12}>
+                    <Button 
+                        variant="contained" 
+                        color="primary" 
+                        style={{marginTop:'2rem',marginLeft:'8px'}} 
+                        onClick={this.handleCreate}
+                    >
+                        Create
+                    </Button>
+                </Grid>
+            </Grid>
+        </Paper>
       </>
     );
   }

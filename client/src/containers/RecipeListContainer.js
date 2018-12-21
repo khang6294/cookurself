@@ -6,25 +6,46 @@ import NewRecipe from '../components/Recipe/NewRecipe'
 import SearchBar from '../components/SearchBar/SearchBar'
 import SideBar from '../components/SideBar/SideBar'
 class RecipeListContainer extends Component {
-    
+    state = {
+        newRecipePage: false
+    }
     componentDidMount(){
         this.props.getRecipeList();
         this.props.getIngredientList();
+    }
+
+    createNewRecipe = (newRecipe) => {
+        this.props.addRecipe(newRecipe)
+        this.setState({
+            newRecipePage: false
+        })
     }
 
 
     render(){
         return(
             <>
-            <SearchBar 
-                onInputSearchChange={(inputSearch) => this.props.onInputSearchChange(inputSearch)}
-            />
             <SideBar 
+                {...this.props}
+                newRecipePage ={() => this.setState({newRecipePage:true})}
                 ingredientList = {this.props.ingredientList}
                 querySelected = {(checked) => this.props.querySelected(checked)}
             />
-            <NewRecipe createNewRecipe = {(newRecipe) => this.props.addRecipe(newRecipe)}/>
-            <RecipeList {...this.props} recipeList = {this.props.recipeList}/>
+            {
+                this.state.newRecipePage ? 
+                <NewRecipe 
+                    ingredientList = {this.props.ingredientList}
+                    createNewRecipe = {(newRecipe) => this.createNewRecipe(newRecipe)}
+                    backToRecipeList = {() => this.setState({newRecipePage:false})}
+                /> :
+                <>
+                <SearchBar 
+                    onInputSearchChange={(inputSearch) => this.props.onInputSearchChange(inputSearch)}
+                />
+                <RecipeList {...this.props} recipeList = {this.props.recipeList}/>
+                </>
+
+            }
             </>
         )
     }

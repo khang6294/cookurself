@@ -5,7 +5,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import MailIcon from '@material-ui/icons/Mail';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -55,7 +54,7 @@ const SideBar = (props) => {
                         <ListItemIcon><FavoriteIcon style={{color:'#ef0909'}}/></ListItemIcon>
                         <ListItemText primary={'Favorite'} />
                     </ListItem>
-                    <ListItem button key={'new-recipe'}>
+                    <ListItem button key={'new-recipe'} onClick ={() => props.newRecipePage()}>
                         <ListItemIcon><AddCircleOutlineIcon style={{color:'#30bd30'}}/></ListItemIcon>
                         <ListItemText primary={'New Recipe'} />
                     </ListItem>
@@ -67,7 +66,7 @@ const SideBar = (props) => {
                         <Typography className={classes.heading}>Ingredients</Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails className ={classes.expansionDetail}>
-                        <List>
+                        <List className='query-list'>
                             <QueryList 
                                 ingredients = {props.ingredientList}
                                 querySelected = {(checked) => props.querySelected(checked)}
@@ -93,7 +92,7 @@ const SideBar = (props) => {
                             <ListItemIcon><FavoriteIcon style={{color:'#ef0909'}}/></ListItemIcon>
                             <ListItemText primary={'Favorite'} />
                         </ListItem>
-                        <ListItem button key={'new-recipe'}>
+                        <ListItem button key={'new-recipe'} onClick ={() => props.newRecipePage()}>
                             <ListItemIcon><AddCircleOutlineIcon style={{color:'#30bd30'}}/></ListItemIcon>
                             <ListItemText primary={'New Recipe'} />
                         </ListItem>
@@ -111,4 +110,4 @@ const SideBar = (props) => {
     
 }
 
-export default withStyles(styles)(SideBar)
+export default withStyles(styles)(React.memo(SideBar))

@@ -1,0 +1,9 @@
+.form-container{
+    margin-left: 250px;
+    margin-bottom: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    margin-top:1rem;
+    width: 650px;
+    flex-grow: 1;
+}
