@@ -7,3 +7,29 @@
     width: 650px;
     flex-grow: 1;
 }
+
+.back-button{
+    margin-left:250px !important;
+    margin-top: 2rem !important;
+}
+
+
+@media (max-width: 580px) {
+    .form-container{
+        margin-left: 0;
+        margin-bottom: 2rem;
+        padding-top: 3rem;
+        padding-bottom: 1rem;
+        margin-top: 1rem;
+        width: auto;
+        flex-grow: 1;
+        position: absolute;
+        overflow-y:scroll;
+        height: auto;
+    }
+    .back-button{
+        margin-left:0 !important ;
+        margin-top: 10rem !important;
+    }
+    
+}

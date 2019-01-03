@@ -50,8 +50,8 @@ const RecipeList = (props) => {
             <Grid
                 container
                 direction="row"
-                justify="flex-start"
-                alignItems="flex-start"
+                justify="center"
+                alignItems="center"
             >
             {recipeList}
             </Grid>

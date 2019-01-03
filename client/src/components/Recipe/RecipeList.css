@@ -8,7 +8,21 @@
 }
 
 .recipe-list-container{
-    display: flex;
     margin-left: 280px;
     position: relative
+}
+
+@media (max-width: 580px) {
+    .recipe-list-container{
+        width:100%;
+        padding-top:2rem;
+        margin:auto;
+        z-index: 5;
+        height:100%;
+        overflow: auto;
+        position: fixed;
+        /* display: flex;
+        align-items: center;
+        justify-content: center; */
+    }
 }

@@ -1,0 +1,36 @@
+.drawer {
+    width: 240px;
+    flex-shrink: 0,
+}
+.drawerPaper {
+    width: 240px;
+}
+.heading {
+    font-size: 1em;
+    font-weight: normal;
+}
+.expansionRoot{
+    margin : 0,
+}
+.expansionDetail{
+    margin-top : -20px
+}
+
+@media (max-width: 580px) {
+    .drawer {
+        width: 100%;
+        flex-shrink: 0;
+        height: 200px;
+    }
+    .drawerPaper {
+        margin-top: 100px;
+        width: 100%;
+        height:auto !important;
+        flex-shrink: 0;
+        z-index: 10 !important;
+        position: fixed;
+    }
+    .expansionRoot{
+        margin : 0,
+    }
+}

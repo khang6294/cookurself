@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
 import SearchIcon from '@material-ui/icons/Search';
 import './SearchBar.css'
 
@@ -17,7 +16,7 @@ const styles = theme => ({
         },
         width: '300px',
         [theme.breakpoints.up('sm')]: {
-            width: '300px',
+            width: '200px',
         },
     },
     searchIcon: {

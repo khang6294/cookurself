@@ -1,0 +1,28 @@
+.rootRecipes{
+    flex-grow: 1;
+    margin-left:240px;
+    height:100px;
+    position: static;
+}
+.rootRecipe {
+    flex-grow: 1;
+}
+.appBar {
+    background-color: #6598c5 !important;
+}
+
+.grow{
+    flex-grow: 1;
+    text-align: center;
+    position: relative;
+}
+
+@media (max-width: 580px) {
+    .rootRecipes{
+        flex-grow: 1;
+        margin-left:0;
+        width:100%;
+        position: fixed;
+        z-index: 10;
+    }
+}

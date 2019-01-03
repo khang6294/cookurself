@@ -26,10 +26,10 @@ class RecipeListContainer extends Component {
         return(
             <>
             <SideBar 
-                {...this.props}
-                newRecipePage ={() => this.setState({newRecipePage:true})}
-                ingredientList = {this.props.ingredientList}
-                querySelected = {(checked) => this.props.querySelected(checked)}
+                    {...this.props}
+                    newRecipePage ={() => this.setState({newRecipePage:true})}
+                    ingredientList = {this.props.ingredientList}
+                    querySelected = {(checked) => this.props.querySelected(checked)}
             />
             {
                 this.state.newRecipePage ? 
@@ -39,6 +39,7 @@ class RecipeListContainer extends Component {
                     backToRecipeList = {() => this.setState({newRecipePage:false})}
                 /> :
                 <>
+                
                 <SearchBar 
                     onInputSearchChange={(inputSearch) => this.props.onInputSearchChange(inputSearch)}
                 />

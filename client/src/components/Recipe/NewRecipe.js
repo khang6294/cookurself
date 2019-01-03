@@ -111,7 +111,7 @@ class NewRecipe extends Component {
         const { classes,ingredientList } = this.props;
     return (
         <>
-        <Button variant="contained" style={{marginLeft: '250px',marginTop:'2rem'}} onClick={() => this.props.backToRecipeList()}>Back</Button>
+        <Button variant="contained" className="back-button" onClick={() => this.props.backToRecipeList()}>Back</Button>
         <Paper className='form-container'> 
             <Grid
                 container
@@ -122,7 +122,7 @@ class NewRecipe extends Component {
                 <h1>New recipe</h1>
             </Grid>
             <Grid container spacing={24} >
-                <Grid item xs={6}>
+                <Grid item xs>
                     <TextField
                         required
                         id="standard-required"
@@ -133,7 +133,7 @@ class NewRecipe extends Component {
                         margin="normal"
                     />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs>
                     <TextField
                         required
                         id="standard-number"
