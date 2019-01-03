@@ -9,6 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const RecipeList = (props) => {
     const recipeList = props.recipeList.map(recipe => {
@@ -25,7 +26,7 @@ const RecipeList = (props) => {
                             title="Contemplative Reptile"
                         />
                         <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography gutterBottom variant="h5">
                             {recipe.name}
                         </Typography>
                         <Typography component="p">
@@ -36,10 +37,7 @@ const RecipeList = (props) => {
                     </NavLink>
                     <CardActions>
                         <Button size="small" color="primary">
-                            Share
-                        </Button>
-                        <Button size="small" color="primary">
-                            Learn More
+                            <FavoriteIcon style={{color:'#ef0909'}}/>Favorite
                         </Button>
                     </CardActions>
                 </Card>

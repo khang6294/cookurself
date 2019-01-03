@@ -22,7 +22,7 @@ const manageRecipeList = (state = initialState,action) => {
         let recipeListOriginal = [...state.recipeListOriginal]
         return {
             ...state,
-            recipeList: recipeListOriginal.filter(recipe => recipe.name.includes(action.payload))
+            recipeList: recipeListOriginal.filter(recipe => recipe.name.toLowerCase().includes(action.payload.toLowerCase()))
         }
         case "GET_INGREDIENT_LIST":
         return {

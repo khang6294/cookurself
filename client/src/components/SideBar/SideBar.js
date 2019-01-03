@@ -56,7 +56,7 @@ const SideBar = (props) => {
                     </ListItem>
                     <ListItem button key={'new-recipe'} onClick ={() => props.newRecipePage()}>
                         <ListItemIcon><AddCircleOutlineIcon style={{color:'#30bd30'}}/></ListItemIcon>
-                        <ListItemText primary={'New Recipe'} />
+                        <ListItemText primary={'Propose your new recipe'} />
                     </ListItem>
                 </List>
                 <Divider />
@@ -94,7 +94,7 @@ const SideBar = (props) => {
                         </ListItem>
                         <ListItem button key={'new-recipe'} onClick ={() => props.newRecipePage()}>
                             <ListItemIcon><AddCircleOutlineIcon style={{color:'#30bd30'}}/></ListItemIcon>
-                            <ListItemText primary={'New Recipe'} />
+                            <ListItemText primary={'Propose your new recipe'} />
                         </ListItem>
                     </List>
                     <Divider />

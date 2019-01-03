@@ -193,7 +193,7 @@ class NewRecipe extends Component {
                         style={{marginTop:'2rem',marginLeft:'8px'}} 
                         onClick={this.handleCreate}
                     >
-                        Create
+                        Send
                     </Button>
                 </Grid>
             </Grid>
