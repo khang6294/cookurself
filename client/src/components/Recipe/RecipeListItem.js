@@ -30,7 +30,7 @@ class RecipeListItem extends Component{
         return(
             <div key={this.props.recipe._id} className="recipe-card-wrapper">
                 <Card className="recipe-card">
-                <NavLink style={{ textDecoration: 'none' }} to={`/recipes/${this.props.recipe._id}`}>
+                <NavLink style={{ textDecoration: 'none' }} to={`/${this.props.recipe._id}`}>
                     <CardActionArea>
                         <CardMedia
                             component="img"
