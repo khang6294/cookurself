@@ -7,6 +7,7 @@ const RecipeList = (props) => {
     const recipeList = props.recipeList.map(recipe => {
         return (
             <RecipeListItem
+                key={recipe._id}
                 recipe = {recipe}
                 increaseFavAmount = {(recipeId, favAmount) => props.increaseFavAmount(recipeId, favAmount)}
             />

@@ -49,7 +49,6 @@ class RecipeListContainer extends Component {
     }
 
     render(){
-        console.log(this.props.user)
         return(
             <>
             <SideBar 

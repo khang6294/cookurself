@@ -18,7 +18,6 @@ import QueryList from './QueryList'
 
 const sideBar = (props) => {
     if(props.ingredientList.length > 0){
-        console.log(props.isAuth)
         return (
             <div className='side-bar'>
             <Drawer
