@@ -27,7 +27,6 @@ class RecipeListItem extends Component{
     }
 
     render(){
-        console.log(this.props.recipe)
         return(
             <div key={this.props.recipe._id} className="recipe-card-wrapper">
                 <Card className="recipe-card">

@@ -4,6 +4,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import PermIdentity from '@material-ui/icons/PermIdentity'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
@@ -17,6 +18,7 @@ import QueryList from './QueryList'
 
 const sideBar = (props) => {
     if(props.ingredientList.length > 0){
+        console.log(props.isAuth)
         return (
             <div className='side-bar'>
             <Drawer
@@ -27,6 +29,18 @@ const sideBar = (props) => {
                 }}
             >
                 <List>
+                    {props.isAuth ? 
+                    <ListItem button key={'Logout'} onClick ={() => props.logout()}>
+                        <ListItemIcon><PermIdentity/></ListItemIcon>
+                        <ListItemText primary={'Logout'} />
+                    </ListItem> :
+                    <ListItem button key={'Login'} onClick ={() => props.login()}>
+                        <ListItemIcon><PermIdentity/></ListItemIcon>
+                        <ListItemText primary={'Login'} />
+                    </ListItem>
+                    }
+                    {props.isAuth ?
+                    <>
                     <ListItem button key={'favorite'}>
                         <ListItemIcon><FavoriteIcon style={{color:'#ef0909'}}/></ListItemIcon>
                         <ListItemText primary={'Favorite'} />
@@ -34,7 +48,9 @@ const sideBar = (props) => {
                     <ListItem button key={'new-recipe'} onClick ={() => props.newRecipePage()}>
                         <ListItemIcon><AddCircleOutlineIcon style={{color:'#30bd30'}}/></ListItemIcon>
                         <ListItemText primary={'Propose your new recipe'} />
-                    </ListItem>
+                    </ListItem> 
+                    </> : null  
+                    }                             
                 </List>
                 <Divider />
                 <Typography style={{fontSize:'1.2rem',textAlign:'center',paddingBottom:'1rem',paddingTop:'1rem'}}>Filters</Typography>
@@ -65,6 +81,18 @@ const sideBar = (props) => {
                     }}
                 >
                     <List>
+                        {props.isAuth ? 
+                        <ListItem button key={'Logout'} onClick ={() => props.logout()}>
+                            <ListItemIcon><PermIdentity/></ListItemIcon>
+                            <ListItemText primary={'Logout'} />
+                        </ListItem> :
+                        <ListItem button key={'Login'} onClick ={() => props.login()}>
+                            <ListItemIcon><PermIdentity/></ListItemIcon>
+                            <ListItemText primary={'Login'} />
+                        </ListItem>
+                        }
+                        {props.isAuth ?
+                        <>
                         <ListItem button key={'favorite'}>
                             <ListItemIcon><FavoriteIcon style={{color:'#ef0909'}}/></ListItemIcon>
                             <ListItemText primary={'Favorite'} />
@@ -72,7 +100,9 @@ const sideBar = (props) => {
                         <ListItem button key={'new-recipe'} onClick ={() => props.newRecipePage()}>
                             <ListItemIcon><AddCircleOutlineIcon style={{color:'#30bd30'}}/></ListItemIcon>
                             <ListItemText primary={'Propose your new recipe'} />
-                        </ListItem>
+                        </ListItem> 
+                        </> : null  
+                        }                             
                     </List>
                     <Divider />
                     <Typography style={{fontSize:'1.2rem',textAlign:'center',paddingBottom:'1rem',paddingTop:'1rem'}}>Filters</Typography>

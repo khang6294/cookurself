@@ -5,8 +5,13 @@ export {
     resetRecipe,
     onInputSearchChange,
     querySelected,
-    increaseFavAmount
+    increaseFavAmount,
 } from './recipe';
 export {
     getIngredientList
 } from './ingredient'
+
+export {
+    login,
+    logout
+} from './auth'

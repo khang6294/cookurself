@@ -1,7 +1,7 @@
 const initialState = {
     recipeList: [],
     recipeListOriginal: [],
-    ingredientList: []
+    ingredientList: [],
 }
 
 
