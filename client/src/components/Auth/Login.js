@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Logo from '../Logo/Logo'
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const styles = theme => ({
   main: {
@@ -49,7 +50,8 @@ class Login extends Component {
 
     state = {
         email:'',
-        password:''
+        password:'',
+        authProcess: false
     }
 
     handleChange = (event) => {
@@ -61,6 +63,9 @@ class Login extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.getLoginInfo(this.state)
+        this.setState({
+            authProcess: true
+        })
     }
 
 
@@ -115,7 +120,8 @@ class Login extends Component {
                             color="primary"
                             className={classes.submit}
                         >
-                            Sign me in
+                            Sign me in 	&nbsp;
+                            {this.state.authProcess ? <CircularProgress size={20} thickness={4.0} color="secondary"/> : null}
                         </Button>
                         </form>
                     </Paper>

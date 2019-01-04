@@ -40,6 +40,9 @@ class RecipeListContainer extends Component {
 
     onLogout = () => {
         this.props.logout();
+        this.setState({
+            newRecipePage: false
+        })
     }
 
     onCloseLogin = () => {
@@ -86,6 +89,7 @@ class RecipeListContainer extends Component {
                     open = {this.state.loginPage}
                     closeLogin = {() => this.onCloseLogin()}
                     getLoginInfo = {(loginInfo) => this.props.login(loginInfo)}
+                    isAuth = {this.props.user.isAuth}
                 
                 /> : 
                 null
