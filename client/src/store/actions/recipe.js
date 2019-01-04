@@ -49,3 +49,12 @@ export const querySelected = (checked) => {
         payload: checked
     }
 }
+
+export const increaseFavAmount = (recipeId,favAmount) => {
+    return dispatch => {
+        axios.patch(`recipe/${recipeId}`,{favoriteAmount: favAmount})
+            .then(res => {
+                dispatch({type:'INCREASE_FAV_AMOUNT', payload: res.data})
+            })
+    }
+}

@@ -4,7 +4,8 @@ export {
     getRecipe,
     resetRecipe,
     onInputSearchChange,
-    querySelected
+    querySelected,
+    increaseFavAmount
 } from './recipe';
 export {
     getIngredientList

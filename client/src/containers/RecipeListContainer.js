@@ -43,7 +43,11 @@ class RecipeListContainer extends Component {
                 <SearchBar 
                     onInputSearchChange={(inputSearch) => this.props.onInputSearchChange(inputSearch)}
                 />
-                <RecipeList {...this.props} recipeList = {this.props.recipeList}/>
+                <RecipeList 
+                    {...this.props} 
+                    recipeList = {this.props.recipeList}
+                    increaseFavAmount = {(recipeId,favAmount) => this.props.increaseFavAmount(recipeId,favAmount)}
+                />
                 </>
 
             }
@@ -69,6 +73,7 @@ export default connect(
         addRecipe: actionCreators.addRecipe,
         onInputSearchChange: actionCreators.onInputSearchChange,
         getIngredientList: actionCreators.getIngredientList,
-        querySelected: actionCreators.querySelected
+        querySelected: actionCreators.querySelected,
+        increaseFavAmount: actionCreators.increaseFavAmount
     }
 )(RecipeListContainer)

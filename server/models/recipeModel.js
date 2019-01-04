@@ -42,6 +42,11 @@ const recipeSchema = new Schema({
     },
     imageUrl:{
         type:String,
+    },
+    favoriteAmount: {
+        type: Number,
+        default: 0,
+        required: true
     }
 })
 

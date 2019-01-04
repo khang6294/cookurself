@@ -48,17 +48,29 @@ const manageRecipeList = (state = initialState,action) => {
             }
             
         }
-        // for(let i = 0; i< action.payload.length; i++){
-        //     for(let j = 0; j < state.recipeList.length; j++){
-        //         const ingredientsId = state.recipeList[j].ingredients
-        //         if(ingredientsId.indexOf(action.payload[i]._id) > -1){
-        //             filterRecipeList.push(state.recipeList[j])
-        //         } 
-        //     }
-        // }
         return{
             ...state,
             recipeList: filterRecipeList
+        }
+        case "INCREASE_FAV_AMOUNT":
+        let recipeListClone = [...state.recipeList]
+        let recipeListOriClone = [...state.recipeListOriginal]
+
+        for(let i = 0; i < recipeListClone.length ; i ++) {
+            if(recipeListClone[i]._id === action.payload._id){
+                recipeListClone[i] = {...action.payload}
+            }
+        }
+
+        for(let i = 0; i < recipeListOriClone.length ; i ++) {
+            if(recipeListOriClone[i]._id === action.payload._id){
+                recipeListOriClone[i] = {...action.payload}
+            }
+        }
+        return {
+            ...state,
+            recipeList: recipeListClone,
+            recipeListOriginal: recipeListOriClone
         }
         default:
         return state

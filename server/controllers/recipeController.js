@@ -28,5 +28,16 @@ module.exports = {
             .then(recipe => {
                 res.status(200).json(recipe)
             })
+    },
+    updateRecipe: (req,res,next) => {
+        const recipeId = req.params.recipeId
+        Recipe.findOne({_id: recipeId})
+            .then(recipe => {
+                recipe.favoriteAmount = req.body.favoriteAmount
+                return recipe.save()
+            })
+            .then(recipe => {
+                res.status(200).json(recipe)
+            })
     }
 }
