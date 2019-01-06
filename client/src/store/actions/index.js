@@ -8,7 +8,8 @@ export {
     increaseFavAmount,
 } from './recipe';
 export {
-    getIngredientList
+    getIngredientList,
+    createNewIngredients
 } from './ingredient'
 
 export {

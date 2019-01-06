@@ -4,5 +4,4 @@ const router = express.Router();
 
 router.post('/',ingredientController.createIngredient)
 router.get('/',ingredientController.getAllIngredients)
-
 module.exports = router;

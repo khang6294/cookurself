@@ -2,23 +2,26 @@ const Ingredient = require('../models/ingredientModel')
 
 module.exports = {
     createIngredient : (req,res,next) => {
-        const name = req.body.name;
-        const recipe = req.body.recipe;
-        const ingredient = new Ingredient({
-            name: name,
-            recipe: recipe
+        const newIngredient = req.body.ingredients.map(ingredient => {
+            return {
+                name:ingredient
+            }
         })
-        ingredient.save()
-            .then((ingredient) => {
-                res.status(201).json(ingredient)
-            })
-            .catch(err => {
+
+        Ingredient.collection.insert(newIngredient, onInsert);
+        function onInsert(err, docs) {
+            if (err) {
                 console.log(err)
-                if(!err.statusCode){
-                    err.statusCode = 500;
-                }
+                    if(!err.statusCode){
+                        err.statusCode = 500;
+                    }
                 next(err)
-            })
+            } else {
+                console.info('%d Ingredient were successfully stored.', docs);
+                let newIngredientIds = docs.ops.map(ingredient => ingredient._id)
+                res.status(201).json(newIngredientIds)
+            }
+        }
     },
     getAllIngredients : (req,res,next) => {
         Ingredient.find()

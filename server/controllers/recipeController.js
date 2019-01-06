@@ -3,7 +3,24 @@ const Recipe = require('../models/recipeModel');
 
 module.exports = {
     createRecipe: (req,res,next) => {
-        Recipe.create(req.body)
+        let imageUrl;
+        if (req.file) {
+            imageUrl = req.file.path;
+        } 
+        const name = req.body.name;
+        const duration = req.body.duration;
+        const ingredients = req.body.ingredients;
+        const creator = req.body.creator;
+        const instructions = req.body.instructions
+        const recipe = new Recipe({
+            name: name,
+            duration: duration,
+            instructions:instructions,
+            ingredients: ingredients,
+            creator: creator,
+            imageUrl: imageUrl
+        });
+        recipe.save()
             .then(recipe => {
                 res.status(201).json(recipe)
             })
@@ -33,7 +50,10 @@ module.exports = {
         const recipeId = req.params.recipeId
         Recipe.findOne({_id: recipeId})
             .then(recipe => {
-                recipe.favoriteAmount = req.body.favoriteAmount
+                if(req.body.favoriteAmount){
+                    recipe.favoriteAmount = req.body.favoriteAmount
+                }
+                recipe.ingredients = req.body.ingredients
                 return recipe.save()
             })
             .then(recipe => {

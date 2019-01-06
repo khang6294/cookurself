@@ -2,6 +2,7 @@ const initialState = {
     recipeList: [],
     recipeListOriginal: [],
     ingredientList: [],
+    newRecipe: null
 }
 
 
@@ -16,7 +17,9 @@ const manageRecipeList = (state = initialState,action) => {
         case "ADD_RECIPE":
         return {
             ...state,
-            recipeList: [...state.recipeList,action.payload]
+            recipeList: [...state.recipeList,action.payload],
+            recipeListOriginal: [...state.recipeListOriginal,action.payload],
+            newRecipe: action.payload
         }
         case "INPUT_SEARCH_CHANGE":
         let recipeListOriginal = [...state.recipeListOriginal]
@@ -72,6 +75,28 @@ const manageRecipeList = (state = initialState,action) => {
             recipeList: recipeListClone,
             recipeListOriginal: recipeListOriClone
         }
+        case "CREATE_INGREDIENT_AND_UPDATE_RECIPE":
+        let recipeListClone1 = [...state.recipeList]
+        let recipeListOriClone1 = [...state.recipeListOriginal]
+
+        for(let i = 0; i < recipeListClone1.length ; i ++) {
+            if(recipeListClone1[i]._id === action.payload._id){
+                recipeListClone1[i] = {...action.payload}
+            }
+        }
+
+        for(let i = 0; i < recipeListOriClone1.length ; i ++) {
+            if(recipeListOriClone1[i]._id === action.payload._id){
+                recipeListOriClone1[i] = {...action.payload}
+            }
+        }
+        return {
+            ...state,
+            newRecipe:null,
+            recipeList: recipeListClone1,
+            recipeListOriginal: recipeListOriClone1
+        }
+
         default:
         return state
     }

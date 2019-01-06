@@ -6,10 +6,13 @@ import NewRecipe from '../components/Recipe/NewRecipe'
 import SearchBar from '../components/SearchBar/SearchBar'
 import SideBar from '../components/SideBar/SideBar'
 import Login from '../components/Auth/Login'
+import Loading from '../components/Loading/Loading'
+
 class RecipeListContainer extends Component {
     state = {
         newRecipePage: false,
-        loginPage: false
+        loginPage: false,
+        newRecipe: null
     }
 
     componentDidUpdate(prevProps){
@@ -17,6 +20,11 @@ class RecipeListContainer extends Component {
             this.setState({
                 loginPage:false
             })
+        }
+        if(this.state.newRecipe && this.props.newRecipe){
+            if(this.state.newRecipe.newIngredients.length > 0){
+                this.props.createNewIngredients(this.state.newRecipe.newIngredients,this.props.newRecipe._id)
+            }
         }
     }
 
@@ -28,7 +36,8 @@ class RecipeListContainer extends Component {
     createNewRecipe = (newRecipe) => {
         this.props.addRecipe(newRecipe)
         this.setState({
-            newRecipePage: false
+            newRecipePage: false,
+            newRecipe: newRecipe
         })
     }
 
@@ -69,19 +78,20 @@ class RecipeListContainer extends Component {
                     ingredientList = {this.props.ingredientList}
                     createNewRecipe = {(newRecipe) => this.createNewRecipe(newRecipe)}
                     backToRecipeList = {() => this.setState({newRecipePage:false})}
-                /> :
-                <>
-                
+                    user = {this.props.user.user}
+                /> : 
+                this.props.recipeListOriginal.length > 0 ?
+                <>                
                 <SearchBar 
                     onInputSearchChange={(inputSearch) => this.props.onInputSearchChange(inputSearch)}
-                />
+                /> 
                 <RecipeList 
                     {...this.props} 
                     recipeList = {this.props.recipeList}
                     increaseFavAmount = {(recipeId,favAmount) => this.props.increaseFavAmount(recipeId,favAmount)}
                 />
-                </>
-
+                </> : 
+                <Loading/>
             }
             {
                 this.state.loginPage ? 
@@ -103,8 +113,11 @@ class RecipeListContainer extends Component {
 const mapStateToProps = (state) => {
     return {
         recipeList: state.recipeList.recipeList,
+        recipeListOriginal: state.recipeList.recipeListOriginal,
         ingredientList: state.recipeList.ingredientList,
+        newRecipe: state.recipeList.newRecipe,
         user: state.auth.user,
+        
     }
 }
 
@@ -118,6 +131,7 @@ export default connect(
         querySelected: actionCreators.querySelected,
         increaseFavAmount: actionCreators.increaseFavAmount,
         login : actionCreators.login,
-        logout: actionCreators.logout
+        logout: actionCreators.logout,
+        createNewIngredients: actionCreators.createNewIngredients
     }
 )(RecipeListContainer)

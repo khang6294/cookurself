@@ -47,6 +47,8 @@ const recipe = (props) => {
     const { classes,recipe } = props;
     if(recipe.name){
         const ingredients = recipe.ingredients.map(ingredient => <li key={ingredient._id}>{ingredient.name}</li>)
+        const instructions = recipe.instructions.split('.').map(instruction => <li key={instruction}>{instruction}</li>)
+        
         return (
         <div className={classes.root}>
             <Typography variant="h2" component="h2" className={classes.recipeName}>
@@ -69,7 +71,7 @@ const recipe = (props) => {
                 </Typography>
                 <Divider variant="middle" className={classes.divider}/>
                 <Typography component="ol" className='instructions'>
-                    <li>{recipe.instructions}</li>
+                    {instructions}
                 </Typography>
             </div>
         </div>
