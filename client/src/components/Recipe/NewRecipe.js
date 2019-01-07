@@ -12,6 +12,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import './NewRecipe.css'
+import { generateBase64FromImage } from '../../util/previewImage'
+
 
 
 const styles = theme => ({
@@ -83,6 +85,7 @@ class NewRecipe extends Component {
         newIngredients:'',
         imgageFile:'',
         open: false,
+        imagePreview:null
     };
 
     handleChange = name => event => {
@@ -99,6 +102,14 @@ class NewRecipe extends Component {
     handleImageChange = event => {
         this.setState({
             imageFile: event.target.files[0]
+        }, () => {
+            generateBase64FromImage(this.state.imageFile)
+                .then(b64 => {
+                    this.setState({ imagePreview: b64 });
+                })
+                .catch(e => {
+                    this.setState({ imagePreview: null });
+                });
         })
     }
     
@@ -230,6 +241,15 @@ class NewRecipe extends Component {
                             <CloudUploadIcon/>
                         </Button>
                         </label> 
+                    </Grid>
+                    <Grid item xs={12}>
+                        
+                        {!this.state.imagePreview && <p>Please choose an image.</p>}
+                        {this.state.imagePreview && (
+                            <div style ={{width: '300px',height:'300px'}}>
+                                <img style={{width: "100%",height:"100%"}}src={this.state.imagePreview} alt="No preview"/>
+                            </div>
+                        )}                       
                     </Grid>
                     <Grid item xs={12}>
                         <Button 
