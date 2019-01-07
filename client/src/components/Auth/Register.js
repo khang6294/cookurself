@@ -11,6 +11,8 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Logo from '../Logo/Logo'
 import CircularProgress from '@material-ui/core/CircularProgress';
+import ErrorDisplay from '../ErrorDisplay/ErrorDisplay'
+
 
 const styles = theme => ({
   main: {
@@ -44,9 +46,28 @@ const styles = theme => ({
     submit: {
         marginTop: theme.spacing.unit * 3,
     },
+    margin: {
+        margin: theme.spacing.unit,
+    },
 });
 
 class Register extends Component {
+
+    componentDidUpdate(prevProps){
+        if(this.props.error){
+            if(prevProps.error){
+                if(this.props.error.message !== prevProps.error.message){
+                    this.setState({
+                        authProcess: false
+                    })
+                }
+            } else {
+                this.setState({
+                    authProcess: false
+                })
+            }
+        }
+    }
 
     state = {
         email:'',
@@ -88,6 +109,12 @@ class Register extends Component {
                         <Typography component="h1" variant="h5">
                         Register
                         </Typography>
+                        {this.props.error ? this.props.error.message ?
+                        <ErrorDisplay
+                            className={classes.margin}
+                            message={this.props.error.message}
+                        /> : null : null
+                        }
                         <form className={classes.form} onSubmit = {this.handleSubmit}>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="name">Full Name</InputLabel>
@@ -110,7 +137,6 @@ class Register extends Component {
                                 value = {this.state.email}
                                 onChange = {this.handleChange}
                                 required
-                                autoFocus 
                             />
                         </FormControl>
                         <FormControl margin="normal" required fullWidth>

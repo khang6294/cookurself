@@ -14,6 +14,7 @@ export const loadState = () => {
                 recipe: {}
             },
             auth: {
+                err:{},
                 userRegister: {},
                 ...JSON.parse(serializedState)
             }

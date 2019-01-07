@@ -11,18 +11,19 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Logo from '../Logo/Logo'
 import CircularProgress from '@material-ui/core/CircularProgress';
+import ErrorDisplay from '../ErrorDisplay/ErrorDisplay'
 
 const styles = theme => ({
-  main: {
-    width: 'auto',
-    display: 'block', // Fix IE 11 issue.
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
-            width: 400,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-        },
+    main: {
+        width: 'auto',
+        display: 'block', // Fix IE 11 issue.
+        marginLeft: theme.spacing.unit * 3,
+        marginRight: theme.spacing.unit * 3,
+        [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+                width: 400,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+            },
     },
     paper: {
         marginTop: theme.spacing.unit * 8,
@@ -44,9 +45,28 @@ const styles = theme => ({
     submit: {
         marginTop: theme.spacing.unit * 3,
     },
+    margin: {
+        margin: theme.spacing.unit,
+    },
 });
 
 class Login extends Component {
+    
+    componentDidUpdate(prevProps){
+        if(this.props.error){
+            if(prevProps.error){
+                if(this.props.error.message !== prevProps.error.message){
+                    this.setState({
+                        authProcess: false
+                    })
+                }
+            } else {
+                this.setState({
+                    authProcess: false
+                })
+            }
+        }
+    }
 
     state = {
         email:'',
@@ -87,6 +107,12 @@ class Login extends Component {
                         <Typography component="h1" variant="h5">
                         Login
                         </Typography>
+                        {this.props.error ? this.props.error.message ?
+                        <ErrorDisplay
+                            className={classes.margin}
+                            message={this.props.error.message}
+                        /> : null : null
+                        }
                         <form className={classes.form} onSubmit = {this.handleSubmit}>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="email">Email Address</InputLabel>

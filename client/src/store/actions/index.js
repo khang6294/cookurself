@@ -15,5 +15,6 @@ export {
 export {
     login,
     logout,
-    register
+    register,
+    resetError
 } from './auth'

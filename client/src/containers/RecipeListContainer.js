@@ -22,14 +22,15 @@ class RecipeListContainer extends Component {
             this.setState({
                 loginPage:false
             })
-        }   
+        }
+        
         if(this.props.userRegister._id !== prevProps.userRegister._id){
-            console.log("A")
             this.setState({
                 loginPage: true,
                 registerPage: false
             })
         }      
+    
         if(this.state.newIngredients && this.props.newRecipe){
             if(this.state.newIngredients.length > 0){
                 this.props.createNewIngredients(this.state.newIngredients,this.props.newRecipe._id)
@@ -59,6 +60,7 @@ class RecipeListContainer extends Component {
         this.setState({
             loginPage: false
         })
+        this.props.resetError();
     }
 
     onRegister = () => {
@@ -70,6 +72,7 @@ class RecipeListContainer extends Component {
         this.setState({
             registerPage: false
         })
+        this.props.resetError();
     }
 
     onLogout = () => {
@@ -120,7 +123,8 @@ class RecipeListContainer extends Component {
                     open = {this.state.loginPage}
                     closeLogin = {() => this.onCloseLogin()}
                     getLoginInfo = {(loginInfo) => this.props.login(loginInfo)} 
-                    isAuth = {this.props.user.isAuth}               
+                    isAuth = {this.props.user.isAuth}
+                    error = {this.props.error}               
                 /> : 
                 null
             }
@@ -130,6 +134,7 @@ class RecipeListContainer extends Component {
                     open = {this.state.registerPage}
                     closeRegister = {() => this.onCloseRegister()}
                     getRegisterInfo = {(registerInfo) => this.props.register(registerInfo)}
+                    error = {this.props.error}               
                 /> : 
                 null
             }
@@ -147,7 +152,8 @@ const mapStateToProps = (state) => {
         ingredientList: state.recipeList.ingredientList,
         newRecipe: state.recipeList.newRecipe,
         user: state.auth.user,
-        userRegister: state.auth.userRegister
+        userRegister: state.auth.userRegister,
+        error: state.auth.error
         
     }
 }
@@ -164,6 +170,7 @@ export default connect(
         register: actionCreators.register,
         login : actionCreators.login,
         logout: actionCreators.logout,
-        createNewIngredients: actionCreators.createNewIngredients
+        createNewIngredients: actionCreators.createNewIngredients,
+        resetError: actionCreators.resetError,
     }
 )(RecipeListContainer)
