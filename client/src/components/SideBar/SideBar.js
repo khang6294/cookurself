@@ -6,6 +6,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import PermIdentity from '@material-ui/icons/PermIdentity'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import ExitToApp from '@material-ui/icons/ExitToApp';
 import AssignmentInd from '@material-ui/icons/AssignmentInd';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
@@ -15,6 +16,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import QueryList from './QueryList'
 
 const sideBar = (props) => {
@@ -31,7 +33,7 @@ const sideBar = (props) => {
                 <List>
                     {props.isAuth ? 
                     <ListItem button key={'Logout'} onClick ={() => props.logout()}>
-                        <ListItemIcon><PermIdentity/></ListItemIcon>
+                        <ListItemIcon><ExitToApp/></ListItemIcon>
                         <ListItemText primary={'Logout'} />
                     </ListItem> :
                     <>
@@ -89,7 +91,7 @@ const sideBar = (props) => {
                     <List>
                         {props.isAuth ? 
                         <ListItem button key={'Logout'} onClick ={() => props.logout()}>
-                            <ListItemIcon><PermIdentity/></ListItemIcon>
+                            <ListItemIcon><ExitToApp/></ListItemIcon>
                             <ListItemText primary={'Logout'} />
                         </ListItem> :
                         <>
@@ -119,7 +121,7 @@ const sideBar = (props) => {
                     <Divider />
                     <Typography style={{fontSize:'1.2rem',textAlign:'center',paddingBottom:'1rem',paddingTop:'1rem'}}>Filters</Typography>
                     <ExpansionPanel className="expansionRoot">
-                        <ExpansionPanelSummary>
+                    <ExpansionPanelSummary expandIcon={<CircularProgress size={25} thickness={4.5}/>}>
                             <Typography className="heading">Ingredients</Typography>
                         </ExpansionPanelSummary>
                     </ExpansionPanel>
