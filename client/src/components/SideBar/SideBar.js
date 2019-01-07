@@ -6,6 +6,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import PermIdentity from '@material-ui/icons/PermIdentity'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import AssignmentInd from '@material-ui/icons/AssignmentInd';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -33,10 +34,16 @@ const sideBar = (props) => {
                         <ListItemIcon><PermIdentity/></ListItemIcon>
                         <ListItemText primary={'Logout'} />
                     </ListItem> :
+                    <>
                     <ListItem button key={'Login'} onClick ={() => props.login()}>
                         <ListItemIcon><PermIdentity/></ListItemIcon>
                         <ListItemText primary={'Login'} />
                     </ListItem>
+                    <ListItem button key={'Register'} onClick ={() => props.register()}>
+                        <ListItemIcon><AssignmentInd/></ListItemIcon>
+                        <ListItemText primary={'Register'} />
+                    </ListItem>
+                    </>
                     }
                     {props.isAuth ?
                     <>
@@ -85,10 +92,16 @@ const sideBar = (props) => {
                             <ListItemIcon><PermIdentity/></ListItemIcon>
                             <ListItemText primary={'Logout'} />
                         </ListItem> :
+                        <>
                         <ListItem button key={'Login'} onClick ={() => props.login()}>
                             <ListItemIcon><PermIdentity/></ListItemIcon>
                             <ListItemText primary={'Login'} />
                         </ListItem>
+                        <ListItem button key={'Register'} onClick ={() => props.register()}>
+                            <ListItemIcon><AssignmentInd/></ListItemIcon>
+                            <ListItemText primary={'Register'} />
+                        </ListItem>
+                        </>
                         }
                         {props.isAuth ?
                         <>

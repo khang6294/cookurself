@@ -6,12 +6,14 @@ import NewRecipe from '../components/Recipe/NewRecipe'
 import SearchBar from '../components/SearchBar/SearchBar'
 import SideBar from '../components/SideBar/SideBar'
 import Login from '../components/Auth/Login'
+import Register from '../components/Auth/Register'
 import Loading from '../components/Loading/Loading'
 
 class RecipeListContainer extends Component {
     state = {
         newRecipePage: false,
         loginPage: false,
+        registerPage:false,
         newIngredients:null
     }
 
@@ -20,7 +22,14 @@ class RecipeListContainer extends Component {
             this.setState({
                 loginPage:false
             })
-        }
+        }   
+        if(this.props.userRegister._id !== prevProps.userRegister._id){
+            console.log("A")
+            this.setState({
+                loginPage: true,
+                registerPage: false
+            })
+        }      
         if(this.state.newIngredients && this.props.newRecipe){
             if(this.state.newIngredients.length > 0){
                 this.props.createNewIngredients(this.state.newIngredients,this.props.newRecipe._id)
@@ -46,16 +55,27 @@ class RecipeListContainer extends Component {
         })
     }
 
+    onCloseLogin = () => {
+        this.setState({
+            loginPage: false
+        })
+    }
+
+    onRegister = () => {
+        this.setState({
+            registerPage: true
+        })
+    }
+    onCloseRegister = () => {
+        this.setState({
+            registerPage: false
+        })
+    }
+
     onLogout = () => {
         this.props.logout();
         this.setState({
             newRecipePage: false
-        })
-    }
-
-    onCloseLogin = () => {
-        this.setState({
-            loginPage: false
         })
     }
 
@@ -68,6 +88,7 @@ class RecipeListContainer extends Component {
                 ingredientList = {this.props.ingredientList}
                 querySelected = {(checked) => this.props.querySelected(checked)}
                 login = {() => this.onLogin()}
+                register = {() => this.onRegister()}
                 isAuth = {this.props.user.isAuth}
                 logout = {() => this.onLogout()}
             />
@@ -98,12 +119,21 @@ class RecipeListContainer extends Component {
                 <Login
                     open = {this.state.loginPage}
                     closeLogin = {() => this.onCloseLogin()}
-                    getLoginInfo = {(loginInfo) => this.props.login(loginInfo)}
-                    isAuth = {this.props.user.isAuth}
-                
+                    getLoginInfo = {(loginInfo) => this.props.login(loginInfo)} 
+                    isAuth = {this.props.user.isAuth}               
                 /> : 
                 null
             }
+            {
+                this.state.registerPage ? 
+                <Register
+                    open = {this.state.registerPage}
+                    closeRegister = {() => this.onCloseRegister()}
+                    getRegisterInfo = {(registerInfo) => this.props.register(registerInfo)}
+                /> : 
+                null
+            }
+
             </>
         )
     }
@@ -117,6 +147,7 @@ const mapStateToProps = (state) => {
         ingredientList: state.recipeList.ingredientList,
         newRecipe: state.recipeList.newRecipe,
         user: state.auth.user,
+        userRegister: state.auth.userRegister
         
     }
 }
@@ -130,6 +161,7 @@ export default connect(
         getIngredientList: actionCreators.getIngredientList,
         querySelected: actionCreators.querySelected,
         increaseFavAmount: actionCreators.increaseFavAmount,
+        register: actionCreators.register,
         login : actionCreators.login,
         logout: actionCreators.logout,
         createNewIngredients: actionCreators.createNewIngredients

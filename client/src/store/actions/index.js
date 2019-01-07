@@ -14,5 +14,6 @@ export {
 
 export {
     login,
-    logout
+    logout,
+    register
 } from './auth'

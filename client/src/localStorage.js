@@ -13,7 +13,10 @@ export const loadState = () => {
             recipe: {
                 recipe: {}
             },
-            auth: JSON.parse(serializedState)
+            auth: {
+                userRegister: {},
+                ...JSON.parse(serializedState)
+            }
         };
     } catch (err) {
         return undefined;
