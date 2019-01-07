@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import AccessTime from '@material-ui/icons/AccessTime';
 import Loading from '../Loading/Loading'
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import './Recipe.css'
 
 const styles = theme => ({
@@ -18,6 +19,11 @@ const styles = theme => ({
         fontSize: '2.5rem',
         fontWeight: 'bold',
         fontFamily: 'ZCOOL XiaoWei'
+    },
+    recipeFavAmount:{
+        paddingTop:'2rem',
+        paddingBottom:'2rem',
+        textAlign: 'center',
     },
     recipeDuration:{
         textAlign: 'center',
@@ -53,6 +59,9 @@ const recipe = (props) => {
         <div className={classes.root}>
             <Typography variant="h2" component="h2" className={classes.recipeName}>
                 {recipe.name}
+            </Typography>
+            <Typography variant="h4" component="h4" className={classes.recipeFavAmount}>
+                <FavoriteIcon style={{color:'#ef0909'}}/>{recipe.favoriteAmount}
             </Typography>
             <Typography component="p" className={classes.recipeDuration}>
                 <AccessTime/> {recipe.duration} minutes
