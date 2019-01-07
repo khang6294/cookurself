@@ -112,6 +112,7 @@ class NewRecipe extends Component {
         formData.append('ingredients', ingredients);
         formData.append('duration', this.state.duration);
         formData.append('instructions', this.state.instructions);
+        formData.append('creator', this.props.user._id);
         if(this.state.imageFile){
             formData.append('image', this.state.imageFile,this.state.imageFile.name);
         }
