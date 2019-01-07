@@ -14,7 +14,7 @@ app.use('/api', express.static(path.join(__dirname,'../uploads'))); //handling s
 
 const fileStorage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, './uploads');
+      cb(null, 'uploads');
     },
     filename: (req, file, cb) => {
       cb(null, new Date().toISOString() + '-' + file.originalname);
@@ -38,6 +38,7 @@ app.use(
 );
 
 app.use((req, res, next) => {
+    // res.setHeader('Access-Control-Allow-Credentials', true)
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
       'Access-Control-Allow-Methods',

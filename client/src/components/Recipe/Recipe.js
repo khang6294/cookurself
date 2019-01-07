@@ -57,7 +57,10 @@ const recipe = (props) => {
             <Typography component="p" className={classes.recipeDuration}>
                 <AccessTime/> {recipe.duration} minutes
             </Typography>
-            <img src = 'http://localhost:8080/api/food.jpg' className={classes.recipeImg} alt="Recipe"/>
+            <img src = {`http://localhost:8080/api/${recipe.imageUrl ? recipe.imageUrl.split("/")[1] : 'food.jpg'}`} 
+                className={classes.recipeImg} 
+                alt="Recipe"
+            />
             <div className={classes.recipeBody}>
                 <Typography variant="h5" component="h1" style={{color:'#2c2cc1'}}>
                     Ingredients

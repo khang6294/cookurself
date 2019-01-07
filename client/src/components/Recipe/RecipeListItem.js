@@ -33,10 +33,10 @@ class RecipeListItem extends Component{
                 <NavLink style={{ textDecoration: 'none' }} to={`/${this.props.recipe._id}`}>
                     <CardActionArea>
                         <CardMedia
+                            style={{height:'150px',width:'100%',maxHeight:'150px'}}
                             component="img"
-                            alt="Contemplative Reptile"
-                            height="200"
-                            image= 'http://localhost:8080/api/food.jpg'
+                            alt="Recipe image"
+                            image= {`http://localhost:8080/api/${this.props.recipe.imageUrl ? this.props.recipe.imageUrl.split("/")[1] : 'food.jpg'}`}
                             title="Contemplative Reptile"
                         />
                         <CardContent>

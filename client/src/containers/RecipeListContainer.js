@@ -12,7 +12,7 @@ class RecipeListContainer extends Component {
     state = {
         newRecipePage: false,
         loginPage: false,
-        newRecipe: null
+        newIngredients:null
     }
 
     componentDidUpdate(prevProps){
@@ -21,9 +21,9 @@ class RecipeListContainer extends Component {
                 loginPage:false
             })
         }
-        if(this.state.newRecipe && this.props.newRecipe){
-            if(this.state.newRecipe.newIngredients.length > 0){
-                this.props.createNewIngredients(this.state.newRecipe.newIngredients,this.props.newRecipe._id)
+        if(this.state.newIngredients && this.props.newRecipe){
+            if(this.state.newIngredients.length > 0){
+                this.props.createNewIngredients(this.state.newIngredients,this.props.newRecipe._id)
             }
         }
     }
@@ -37,7 +37,6 @@ class RecipeListContainer extends Component {
         this.props.addRecipe(newRecipe)
         this.setState({
             newRecipePage: false,
-            newRecipe: newRecipe
         })
     }
 
@@ -77,6 +76,7 @@ class RecipeListContainer extends Component {
                 <NewRecipe 
                     ingredientList = {this.props.ingredientList}
                     createNewRecipe = {(newRecipe) => this.createNewRecipe(newRecipe)}
+                    createNewIngredients = {(newIngredients) => this.setState({newIngredients:newIngredients})}
                     backToRecipeList = {() => this.setState({newRecipePage:false})}
                     user = {this.props.user.user}
                 /> : 

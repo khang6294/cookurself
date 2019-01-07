@@ -107,26 +107,18 @@ class NewRecipe extends Component {
             return this.props.ingredientList.filter(ingredientListItem => ingredientListItem.name === ingredient)[0]._id
         })
         const formData = new FormData();
-        // formData.append('name', this.state.name);
-        // formData.append('instructions', this.state.instructions);
-        // formData.append('ingredients', ingredients);
-        // formData.append('duration', this.state.duration);
-        // formData.append('newIngredients', this.state.newIngredients.split(","));
-        // formData.append('instructions', this.state.instructions);
+        formData.append('name', this.state.name);
+        formData.append('instructions', this.state.instructions);
+        formData.append('ingredients', ingredients);
+        formData.append('duration', this.state.duration);
+        formData.append('instructions', this.state.instructions);
         if(this.state.imageFile){
             formData.append('image', this.state.imageFile,this.state.imageFile.name);
         }
-        const newRecipe = {
-            name: this.state.name,
-            instructions: this.state.instructions,
-            ingredients: ingredients,
-            duration: this.state.duration,
-            newIngredients:this.state.newIngredients.split(','),
-            imageUrl: formData,
-            creator: '5c0c24b25c363311125da5fd'
+        if(this.state.newIngredients.split(",").length > 0){
+            this.props.createNewIngredients(this.state.newIngredients.split(","))
         }
-        console.log(formData)
-        this.props.createNewRecipe(newRecipe)
+        this.props.createNewRecipe(formData)
         this.setState({ open: false });
     }
 
