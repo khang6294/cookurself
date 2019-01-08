@@ -5,7 +5,11 @@ const bodyParser = require('body-parser')
 const api = require('./api')
 const path = require('path')
 const multer = require('multer')
+const helmet = require('helmet');
+const compression = require('compression')
 const port = process.env.PORT || 8080;
+
+
 
 const MONGODB_URI = 
 `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster0-g4j7c.mongodb.net/${process.env.MONGODB_DATABASE}?retryWrites=true`
@@ -13,6 +17,10 @@ const MONGODB_URI =
 app.use(bodyParser.json()); // application/json
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/api', express.static(path.join(__dirname,'../uploads'))); //handling static images
+
+
+app.use(helmet()); //secure response header
+app.use(compression()); // compressing assests
 
 //Handling images uploaded
 
