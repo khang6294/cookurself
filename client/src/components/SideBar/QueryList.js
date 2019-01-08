@@ -26,18 +26,21 @@ class QueryList extends Component {
   
     render() {
         const { queryHeader,ingredients } = this.props;
-        const listOfItems = ingredients.map(ingredient => (
-            <ListItem className ="list-item" key={ingredient._id} role={undefined} dense button onClick={this.handleToggle(ingredient)}>
-              <Checkbox
-                checked={this.state.checked.indexOf(ingredient) !== -1}
-                tabIndex={-1}
-                disableRipple
-              />
-              {ingredient.name}
-            </ListItem>
-          ))
+        let listOfItems = null;
+        if(ingredients){
+            listOfItems = ingredients.map(ingredient => (
+                <ListItem className ="list-item" key={ingredient._id} role={undefined} dense button onClick={this.handleToggle(ingredient)}>
+                  <Checkbox
+                    checked={this.state.checked.indexOf(ingredient) !== -1}
+                    tabIndex={-1}
+                    disableRipple
+                  />
+                  {ingredient.name}
+                </ListItem>
+            ))
+        }
 
-          return listOfItems
+        return listOfItems
     }
     
 }
