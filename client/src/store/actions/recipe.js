@@ -13,18 +13,6 @@ export const getRecipeList = () => {
 
 export const addRecipe = (newRecipe) => {
     return dispatch => {
-        // fetch('http://localhost:8080/api/recipe', {
-        //     method: 'POST',
-        //     body: newRecipe
-        // })
-        // .then(res => {
-        //     return res.json();
-        // })
-        // .then(resData => {
-        //     dispatch({type: 'ADD_RECIPE', payload: resData});
-        // })
-        // .catch(err => console.log(err))
-        console.log(newRecipe.get('ingredients'))
         axios.post('/recipe',newRecipe)
             .then(res => {
                 dispatch({type: 'ADD_RECIPE', payload: res.data});

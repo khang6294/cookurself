@@ -9,7 +9,6 @@ module.exports = {
         } 
         const name = req.body.name;
         const duration = req.body.duration;
-        console.log(req.body.ingredients)
         let ingredients;
         if(req.body.ingredients === ""){
             ingredients = []
