@@ -6,6 +6,10 @@ const api = require('./api')
 const path = require('path')
 const multer = require('multer')
 const port = process.env.PORT || 8080;
+
+const MONGODB_URI = 
+`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster0-g4j7c.mongodb.net/${process.env.MONGODB_DATABASE}?retryWrites=true`
+
 app.use(bodyParser.json()); // application/json
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/api', express.static(path.join(__dirname,'../uploads'))); //handling static images
@@ -61,7 +65,7 @@ app.use((error,req,res,next) => {
 
 
 //Database connection
-mongoose.connect('mongodb+srv://khang:GvVWiyfYeSZ889V@cluster0-g4j7c.mongodb.net/cookurself?retryWrites=true')
+mongoose.connect(MONGODB_URI)
     .then(result => {
         app.listen(port)
     })
