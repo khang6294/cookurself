@@ -10,7 +10,7 @@ import './Recipe.css'
 const styles = theme => ({
     root: {
         ...theme.mixins.gutters(),
-        paddingTop: theme.spacing.unit * 2,
+        paddingTop: '8rem',
         paddingBottom: theme.spacing.unit * 2,
         
     },
@@ -21,14 +21,14 @@ const styles = theme => ({
         fontFamily: 'ZCOOL XiaoWei'
     },
     recipeFavAmount:{
-        paddingTop:'2rem',
-        paddingBottom:'2rem',
+        paddingTop:'1rem',
+        paddingBottom:'1rem',
         textAlign: 'center',
     },
     recipeDuration:{
         textAlign: 'center',
         fontSize: '1.5rem',
-        paddingTop:'2rem',
+        paddingTop:'1rem',
         paddingBottom:'2rem',
     },
     recipeImg:{

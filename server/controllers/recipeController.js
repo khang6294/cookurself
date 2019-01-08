@@ -9,7 +9,13 @@ module.exports = {
         } 
         const name = req.body.name;
         const duration = req.body.duration;
-        const ingredients = req.body.ingredients.split(',');
+        console.log(req.body.ingredients)
+        let ingredients;
+        if(req.body.ingredients === ""){
+            ingredients = []
+        } else {
+            ingredients = req.body.ingredients.split(",")
+        }
         const creator = req.body.creator;
         const instructions = req.body.instructions
         const recipe = new Recipe({

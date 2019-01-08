@@ -24,19 +24,23 @@ const header = (props) => {
                 position="static"
                 className="appBar"
             >
-            <div className="grow">                 
+            <div className="grow">
+                {!props.match.params.recipeId ?
+                <>
                 <Hidden smUp>
-                    <Grid item>
-                        <IconButton
-                            color="inherit"
-                            aria-label="Open drawer"
-                            onClick={() => props.onDrawerToggle()}
-                            className={classes.menuButton}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                    </Grid>
+                <Grid item>
+                    <IconButton
+                        color="inherit"
+                        aria-label="Open drawer"
+                        onClick={() => props.onDrawerToggle()}
+                        className={classes.menuButton}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                </Grid>
                 </Hidden>
+                </> : null
+                }                 
                 <div className="logo-display">
                     <Logo/>
                 </div> 

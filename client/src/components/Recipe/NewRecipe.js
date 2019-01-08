@@ -117,12 +117,12 @@ class NewRecipe extends Component {
         const ingredients = this.state.ingredients.map(ingredient => {
             return this.props.ingredientList.filter(ingredientListItem => ingredientListItem.name === ingredient)[0]._id
         })
+        console.log(ingredients)
         const formData = new FormData();
         formData.append('name', this.state.name);
         formData.append('instructions', this.state.instructions);
         formData.append('ingredients', ingredients);
         formData.append('duration', this.state.duration);
-        formData.append('instructions', this.state.instructions);
         formData.append('creator', this.props.user._id);
         if(this.state.imageFile){
             formData.append('image', this.state.imageFile,this.state.imageFile.name);
@@ -130,6 +130,7 @@ class NewRecipe extends Component {
         if(this.state.newIngredients.split(",").length > 0){
             this.props.createNewIngredients(this.state.newIngredients.split(","))
         }
+        console.log(this.state.newIngredients)
         this.props.createNewRecipe(formData)
         this.setState({ open: false });
     }

@@ -24,6 +24,7 @@ export const addRecipe = (newRecipe) => {
         //     dispatch({type: 'ADD_RECIPE', payload: resData});
         // })
         // .catch(err => console.log(err))
+        console.log(newRecipe.get('ingredients'))
         axios.post('/recipe',newRecipe)
             .then(res => {
                 dispatch({type: 'ADD_RECIPE', payload: res.data});
