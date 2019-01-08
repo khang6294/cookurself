@@ -6,6 +6,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import PermIdentity from '@material-ui/icons/PermIdentity'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import IconButton from '@material-ui/core/IconButton';
 import ExitToApp from '@material-ui/icons/ExitToApp';
 import AssignmentInd from '@material-ui/icons/AssignmentInd';
 import Divider from '@material-ui/core/Divider';
@@ -16,8 +17,10 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ChevronLeft from '@material-ui/icons/ChevronLeft';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import QueryList from './QueryList'
+
 
 const sideBar = (props) => {
     if(props.ingredientList.length > 0){
@@ -27,11 +30,17 @@ const sideBar = (props) => {
                 className="drawer"
                 variant="permanent"
                 classes={{
-                    paper: "drawerPaper",
+                    paper: props.openSD ? "drawPaper-open" : "drawerPaper",
                 }}
             >
+                <br/>
+                {props.openSD ? 
+                <IconButton className="closeDrawer-btn">
+                    <ChevronLeft onClick = {() => props.onCloseSD()}/>
+                </IconButton>
+                : null } 
                 <List>
-                    {props.isAuth ? 
+                    {props.isAuth ?  
                     <ListItem button key={'Logout'} onClick ={() => props.logout()}>
                         <ListItemIcon><ExitToApp/></ListItemIcon>
                         <ListItemText primary={'Logout'} />
@@ -88,6 +97,7 @@ const sideBar = (props) => {
                         paper: "drawerPaper"
                     }}
                 >
+                    {props.openSD ? <ChevronLeft onClick = {() => props.onCloseSD()}/>: null}
                     <List>
                         {props.isAuth ? 
                         <ListItem button key={'Logout'} onClick ={() => props.logout()}>

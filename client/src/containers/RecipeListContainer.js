@@ -94,6 +94,8 @@ class RecipeListContainer extends Component {
                 register = {() => this.onRegister()}
                 isAuth = {this.props.user.isAuth}
                 logout = {() => this.onLogout()}
+                openSD = {this.props.openSD}
+                onCloseSD ={() => this.props.onCloseSD()}
             />
             {
                 this.state.newRecipePage ? 

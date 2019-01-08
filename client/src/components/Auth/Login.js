@@ -35,8 +35,8 @@ const styles = theme => ({
     avatar: {
         margin: theme.spacing.unit,
         backgroundColor: '#6598c5',
-        width:'80px',
-        height:'80px'
+        width:'100px',
+        height:'100px'
     },
     form: {
         width: '100%', // Fix IE 11 issue.

@@ -6,16 +6,30 @@ import Recipe from './containers/RecipeContainer'
 import Header from './components/Navigation/Header'
 
 class App extends Component {
-  render() {
+  state = {
+    openSD: false
+  }
 
+  onOpenSD = () => {
+    this.setState({openSD: true})
+  }
+
+  onCloseSD =() => {
+    this.setState({openSD: false})
+  }
+
+  render() {
+    const {openSD} = this.state
     return (
       <BrowserRouter>
       <div className="App">
-          <Route path="/" exact component={Header}/>
+          <div className={openSD ? "backdrop-open" : "backdrop"} onClick={() => this.onCloseSD()}/>
+          <Route path="/" exact render={(props) => {return <Header {...props} onDrawerToggle={() => this.onOpenSD()}/>}}/>
           <Route path ="/:recipeId" exact component={Header}/>
           <Switch>
-            <Route path="/" exact component={RecipeList}/>
-            <Route path ="/:recipeId" exact component={Recipe}/> 
+          <Route path="/" exact render={(props) => {
+            return <RecipeList {...props} onCloseSD={() => this.onCloseSD()} openSD = {this.state.openSD}/>}}/>
+          <Route path ="/:recipeId" exact component={Recipe}/> 
           </Switch>
       </div>
       </BrowserRouter>

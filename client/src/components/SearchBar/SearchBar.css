@@ -7,13 +7,16 @@
     justify-content: center;
 }
 
-@media (max-width: 580px) {
+@media (max-width: 600px) {
     .search-container{
-        padding-top: 10rem;
+        padding-top: 8rem;
         padding-bottom: 1rem;
         margin-left: 0px;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    .closeDrawer-btn{
+        width: 55px
     }
 }

@@ -3,12 +3,14 @@
     margin-left:240px;
     height:100px;
     position: static;
+    top:0;
 }
 .rootRecipe {
     flex-grow: 1;
 }
 .appBar {
     background-color: #6598c5 !important;
+    z-index: 0 !important;
 }
 
 .grow{
@@ -17,12 +19,29 @@
     position: relative;
 }
 
-@media (max-width: 580px) {
+@media (max-width: 600px) {
     .rootRecipes{
         flex-grow: 1;
         margin-left:0;
         width:100%;
         position: fixed;
         z-index: 10;
+        top:0;
+    }
+    .grow{
+        display:flex;
+        align-items: center;
+        justify-content: start
+    }
+    .grow .logo-display{
+        align-self: center;
+        justify-self: center;
+        width: 100vw;
+        position: fixed;
+    }
+    .appBar {
+        background-color: #6598c5 !important;
+        z-index: 0 !important;
+        height:100px;
     }
 }

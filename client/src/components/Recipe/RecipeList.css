@@ -12,17 +12,15 @@
     position: relative
 }
 
-@media (max-width: 580px) {
+@media (max-width: 600px) {
     .recipe-list-container{
         width:100%;
-        padding-top:2rem;
+        padding-top:1rem;
         margin:auto;
         z-index: 5;
-        height:100%;
-        overflow: auto;
+        height:75%;
         position: fixed;
-        /* display: flex;
-        align-items: center;
-        justify-content: center; */
+        top:11rem;
+        overflow: auto;
     }
 }
