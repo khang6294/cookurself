@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/khang6294/cookurself#readme",
   "dependencies": {
+    "babel-preset-env": "^1.7.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "compression": "^1.7.3",
@@ -32,6 +33,7 @@
     "multer": "^1.4.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "concurrently": "^4.1.0",
     "nodemon": "^1.18.7"
   }
