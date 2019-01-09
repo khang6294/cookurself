@@ -126,8 +126,10 @@ class NewRecipe extends Component {
         if(this.state.imageFile){
             formData.append('image', this.state.imageFile,this.state.imageFile.name);
         }
-        if(this.state.newIngredients.split(",").length > 0){
-            this.props.createNewIngredients(this.state.newIngredients.split(","))
+        if(this.state.newIngredients !== ''){
+            if(this.state.newIngredients.split(",").length > 0){
+                this.props.createNewIngredients(this.state.newIngredients.split(","))
+            }
         }
         this.props.createNewRecipe(formData)
         this.setState({ open: false });
