@@ -58,7 +58,9 @@ module.exports = {
                 if(req.body.favoriteAmount){
                     recipe.favoriteAmount = req.body.favoriteAmount
                 }
-                recipe.ingredients = req.body.ingredients
+                if(req.body.ingredients){
+                    recipe.ingredients = req.body.ingredients
+                }
                 return recipe.save()
             })
             .then(recipe => {
