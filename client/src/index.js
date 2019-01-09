@@ -15,7 +15,7 @@ import {loadState,saveState} from './localStorage'
 //axios.defaults.baseURL = 'http://localhost:8080/api' 
 
 //for production mode
-axios.defaults.baseURL = `https://cookurself.herokuapp.com/api`
+axios.defaults.baseURL = `https://cookurself-server.herokuapp.com/api`
 
 const rootReducer = combineReducers({
     recipeList: RecipeListReducer,

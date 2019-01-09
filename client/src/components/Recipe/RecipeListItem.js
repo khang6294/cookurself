@@ -36,7 +36,7 @@ class RecipeListItem extends Component{
                             style={{height:'150px',width:'100%',maxHeight:'150px'}}
                             component="img"
                             alt="Recipe image"
-                            image= {`https://cookurself.herokuapp.com/api/${this.props.recipe.imageUrl ? this.props.recipe.imageUrl.split("/")[1] : 'food.jpg'}`}
+                            image= {`https://cookurself-server.herokuapp.com/api/${this.props.recipe.imageUrl ? this.props.recipe.imageUrl.split("/")[1] : 'food.jpg'}`}
                             title="Contemplative Reptile"
                         />
                         <CardContent>
