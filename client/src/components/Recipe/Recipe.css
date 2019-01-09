@@ -17,7 +17,7 @@
     width: 1.1rem;
     height: 1.1rem;
     position: absolute;
-    background-image: url('https://cookurself.herokuapp.com/api/list-ingredient-style.png');
+    background-image: url('https://cookurself-server.herokuapp.com/api/list-ingredient-style.png');
     background-size: cover;
     background-position: center;
     left: 0;
